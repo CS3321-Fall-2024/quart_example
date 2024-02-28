@@ -5,13 +5,16 @@ description = "Quart Example API"
 authors = ["Ryan Davis <ryancraigdavis@github.com>"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    { include = "src", from = "." }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 quart = "^0.19.4"
 
 [tool.poetry.scripts]
-start = "src/quart_example:app"
+start = "src.quart_example:run"
 
 [build-system]
 requires = ["poetry-core"]
