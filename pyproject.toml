@@ -10,6 +10,8 @@ readme = "README.md"
 python = "^3.11"
 quart = "^0.19.4"
 
+[tool.poetry.scripts]
+start = "src/quart_example:app"
 
 [build-system]
 requires = ["poetry-core"]
