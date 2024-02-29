@@ -16,7 +16,7 @@ In this case mine is called `__init__.py` and sits in the following structure:
     ├── poetry.lock
     └── ...
 ```
-Thus my include statement looks like this:
+Thus my include statement looks like this (it goes in the `[tool.poetry]` section at the top level.:
 ```
 packages = [
   { include = "src", from = "." }
