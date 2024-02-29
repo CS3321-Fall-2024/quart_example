@@ -16,7 +16,7 @@ In this case mine is called `__init__.py` and sits in the following structure:
     ├── poetry.lock
     └── ...
 ```
-Thus my include statement looks like this (it goes in the `[tool.poetry]` section at the top level.:
+Thus my include statement looks like this (it goes in the `[tool.poetry]` section at the top level):
 ```
 packages = [
   { include = "src", from = "." }
@@ -26,7 +26,7 @@ What does this do? It allows you to install your own project as a package into y
 ### c) Add your dependencies
 In this case you can run `poetry add quart` to install quart and then whatever else you need
 ### d) Activate your poetry shell and install
-Run `poetry shell` in order to launch your virtual environment and then run `poetry install` to install all dependencies including your own package
+Run `poetry shell` in order to launch your virtual environment and then run `poetry install` to install all dependencies including your own package. You need a README.md or the installing of your own project will fail.
 
 ## Step 2: Quart
 With Poetry now installed, you can start developing in Quart. Let me explain the starter code (you can find it in `__init__.py`):
