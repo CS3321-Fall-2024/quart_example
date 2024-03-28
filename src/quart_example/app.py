@@ -23,12 +23,6 @@ async def currency_supported():
     else:
         return "Currency not supported"
 
-@app.post("/convert_currency")
-async def convert_currency():
-    data = await request.get_json()
-    return {"input": data, "extra": True}
-
-
 def run() -> None:
     app.run()
 
