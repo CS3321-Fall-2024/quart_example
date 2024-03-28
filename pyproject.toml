@@ -6,7 +6,7 @@ authors = ["Ryan Davis <ryancraigdavis@github.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "src", from = "." }
+    { include = "src/quart_example", from = "." }
 ]
 
 [tool.poetry.dependencies]
