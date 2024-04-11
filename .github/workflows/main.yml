@@ -22,5 +22,5 @@ jobs:
         DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       run: |
-        echo $DOCKER_TOKEN | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+        docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_TOKEN
         docker push quart_example
