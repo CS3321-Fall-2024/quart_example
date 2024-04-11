@@ -15,7 +15,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        echo ${{ secrets.DOCKER_HUB_USERNAME }}
+        echo ${{ secrets.DOPPLER_PROJECT }}
         docker build -t quart_example .
 
     - name: Login to Docker registry
