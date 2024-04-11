@@ -27,4 +27,4 @@ jobs:
 
     - name: Push Docker image to registry
       run: |
-        docker push ryandavis7/quart_example
+        docker push quart_example
