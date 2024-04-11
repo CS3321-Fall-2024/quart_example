@@ -1,0 +1,54 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: |
+        docker build -t my-quart-app .
+
+    - name: Push Docker image to registry
+      env:
+        REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+      run: |
+        echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USERNAME --password-stdin
+        docker push my-quart-app
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to EC2
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+      run: |
+        # Install AWS CLI
+        sudo apt-get install -y awscli
+
+        # Pull Docker image from registry
+        echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USERNAME --password-stdin
+        docker pull my-quart-app
+
+        # Deploy to EC2 instance
+        aws ec2 run-instances \
+          --image-id ami-xxxxxxxx \
+          --instance-type t2.micro \
+          --key-name my-key-pair \
+          --security-group-ids sg-xxxxxxxx \
+          --user-data '#!/bin/bash
+            docker run -d -p 80:80 my-quart-app'
