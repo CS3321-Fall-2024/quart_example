@@ -57,4 +57,7 @@ jobs:
           --instance-type t2.micro \
           --key-name quart_example \
           --security-group-ids sg-030d78031880267de \
-          --user-data 'echo "hello world!"'
+          --user-data '#!/bin/bash
+            apt-get update
+            apt-get install -y docker.io
+            docker run -d -p 80:80 ryandavis7/quart_example:latest'
