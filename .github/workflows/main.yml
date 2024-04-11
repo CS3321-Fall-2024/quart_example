@@ -57,4 +57,4 @@ jobs:
           --key-name quart_example \
           --security-group-ids sg-030d78031880267de \
           --user-data '#!/bin/bash
-            docker run -d -p 80:80 ryandavis7/quart_example:latest' 2>&1       
+            echo "hello world!"       
