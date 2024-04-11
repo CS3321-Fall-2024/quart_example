@@ -20,7 +20,7 @@ jobs:
     - name: Push Docker image to registry
       env:
         DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       run: |
-        echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+        echo $DOCKER_TOKEN | docker login -u $DOCKER_HUB_USERNAME --password-stdin
         docker push quart_example
