@@ -48,7 +48,7 @@ jobs:
         sudo apt-get install -y awscli
 
         # Pull Docker image from registry
-        docker pull ryandavis7/quart_example:latest
+        # docker pull ryandavis7/quart_example:latest
 
         # Deploy to EC2 instance
         aws ec2 run-instances \
@@ -57,4 +57,3 @@ jobs:
           --key-name quart_example \
           --security-group-ids sg-030d78031880267de \
           --user-data '#!/bin/bash
-          --user-data 'echo "hello world!"'
