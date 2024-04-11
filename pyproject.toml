@@ -6,15 +6,21 @@ authors = ["Ryan Davis <ryancraigdavis@github.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "src", from = "." }
+    { include = "src/quart_example", from = "." }
 ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 quart = "^0.19.4"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.scripts]
 start = "src.quart_example:run"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+pytest-asyncio = "^0.23.6"
+pytest-mock = "^3.14.0"
 
 [build-system]
 requires = ["poetry-core"]
