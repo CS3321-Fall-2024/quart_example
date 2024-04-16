@@ -39,13 +39,6 @@ jobs:
           username: ${{ secrets.AWS_EC2_USERNAME }}
           password: ${{ secrets.AWS_EC2_PASSWORD }}
           script: |
-            # Check if Docker is installed
-            if ! command -v docker &> /dev/null
-            then
-                # Install Docker
-                apt-get update
-                apt-get install -y docker.io
-            fi
             
             # Pull Docker image from registry
             docker pull ryandavis7/quart_example:latest
