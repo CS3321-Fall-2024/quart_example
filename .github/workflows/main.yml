@@ -42,6 +42,7 @@ jobs:
             
             # Pull Docker image from registry
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker pull ryandavis7/quart_example:latest
+            echo "hello world!"
             
             # Run Docker container
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker run -d -p 80:80 ryandavis7/quart_example:latest
