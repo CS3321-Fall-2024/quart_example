@@ -18,7 +18,9 @@ WORKDIR /tmp
 RUN git clone $PROJECT_URL
 WORKDIR /tmp/quart_example
 
-RUN git switch feature/5-dockerfile-example \
+RUN git switch feature/7-gh-actions-workflow \
   && poetry install
+
+EXPOSE 80
 
 CMD ["python", "/tmp/quart_example/src/quart_example/app.py"]
