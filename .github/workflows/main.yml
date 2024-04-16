@@ -41,7 +41,7 @@ jobs:
           script: |
             
             # Pull Docker image from registry
-            docker pull ryandavis7/quart_example:latest
+            sudo docker pull ryandavis7/quart_example:latest
             
             # Run Docker container
-            docker run -d -p 80:80 ryandavis7/quart_example:latest
+            sudo docker run -d -p 80:80 ryandavis7/quart_example:latest
