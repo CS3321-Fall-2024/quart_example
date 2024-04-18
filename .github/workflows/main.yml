@@ -81,13 +81,7 @@ jobs:
           password: ${{ secrets.AWS_EC2_PASSWORD }}
           script: |
             # Stop and remove existing containers
-            CONTAINER_ID=$(echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker ps -q --filter "publish=80")
-
-            # Stop and remove the container using port 80
-            if [ -n "$CONTAINER_ID" ]; then
-              echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker stop $CONTAINER_ID
-              echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker rm $CONTAINER_ID
-            fi
+            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker rm -f quart_example || true
 
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker pull ryandavis7/quart_example:latest
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
