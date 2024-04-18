@@ -44,6 +44,7 @@ jobs:
         with:
           path: ./coverage.lcov
           min_coverage: 80
+          exclude: '**/__init__.py tests/**'
   
   build:
     needs: coverage
