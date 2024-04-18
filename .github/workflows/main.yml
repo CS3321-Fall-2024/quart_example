@@ -37,7 +37,7 @@ jobs:
         run: |
           poetry run coverage run -m pytest
           poetry run coverage report
-          poetry run coverage xml
+          ls
 
       - name: Check coverage percentage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
