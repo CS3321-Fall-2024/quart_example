@@ -11,28 +11,33 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      
+
       - name: Install Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | python3 - --version 1.8.2
-      
+          curl -sSL https://install.python-poetry.org | python3 - --version=1.8.2
+
       - name: Configure Poetry
         run: |
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-      
+
       - name: Install dependencies
         run: |
           poetry install
-      
+
+      - name: Install coverage.py
+        run: |
+          poetry add coverage --group=dev
+
       - name: Run tests with coverage
         run: |
-          poetry run pytest --cov=./ --cov-report=xml
-      
+          poetry run coverage run -m pytest
+          poetry run coverage xml
+
       - name: Check coverage percentage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
         with:
