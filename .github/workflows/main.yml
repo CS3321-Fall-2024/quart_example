@@ -38,12 +38,11 @@ jobs:
           poetry run coverage run -m pytest
           poetry run coverage report
           poetry run coverage lcov
-          ls -la
 
       - name: Check coverage percentage
         uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
         with:
-          path: ./coverage.xml
+          path: ./coverage.lcov
           min_coverage: 80
   
   build:
