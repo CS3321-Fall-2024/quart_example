@@ -80,10 +80,15 @@ jobs:
           username: ${{ secrets.AWS_EC2_USERNAME }}
           password: ${{ secrets.AWS_EC2_PASSWORD }}
           script: |
-            # Pull Docker image from registry
+            # Stop and remove existing containers
+            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker stop quart_example || true
+            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker rm quart_example || true
+
+            # Pull the latest Docker image from registry
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker pull ryandavis7/quart_example:latest
-            echo "hello world!"
-            
-            # Run Docker container
-            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker run -d -p 80:80 ryandavis7/quart_example:latest
+
+            # Run a new Docker container with the latest image
+            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
+
+            # Print running containers
             echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker ps
