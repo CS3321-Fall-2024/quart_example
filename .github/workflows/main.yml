@@ -36,6 +36,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           poetry run coverage run -m pytest
+          poetry run coverage report
           poetry run coverage xml
 
       - name: Check coverage percentage
