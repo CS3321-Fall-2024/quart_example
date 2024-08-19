@@ -64,3 +64,5 @@ start = "src.quart_example:run"
 ```
 `start` is the name of the script and `src.quart_example` is the path to the `__init__.py` python script. The colon then refers to which function inside the module, in this case the `run` function.
 By running `poetry run start` you are running the script called `start`
+
+This project deploys via GH Actions
