@@ -5,7 +5,7 @@ To set up Poetry you want to do the following things.</br>
 ### a) `poetry init` which will create the poetry project
 ### b) You want to then add an include section to your project with the destination of your start script. 
 In this case mine is called `__init__.py` and sits in the following structure:
-Hello look at me!!!
+Hello look at me!!! Again
 ```
     quart_example
     ├── src
