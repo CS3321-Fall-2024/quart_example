@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - feature/9-additional-pytest-coverage-job
+      - feature/14-update-for-ssh-into-aws
 
 jobs:
   coverage:
