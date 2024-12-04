@@ -80,9 +80,7 @@ jobs:
           username: ${{ secrets.AWS_EC2_USERNAME }}
           key: ${{ secrets.SSH_AWS_PEM }}
           script: |
-            # Stop and remove existing containers
-            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker rm -f quart_example || true
-
-            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker pull ryandavis7/quart_example:latest
-            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
-            echo "${{ secrets.AWS_EC2_PASSWORD }}" | sudo -S docker ps
+            docker rm -f quart_example || true
+            docker pull ryandavis7/quart_example:latest
+            docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
+            docker ps
