@@ -77,7 +77,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.AWS_EC2_IP_ADDRESS }}
-          username: ${{ secrets.AWS_EC2_PASSWORD }}
+          username: ${{ secrets.AWS_EC2_USERNAME }}
           key: ${{ secrets.SSH_AWS_PEM }}
           script: |
             # Stop and remove existing containers
