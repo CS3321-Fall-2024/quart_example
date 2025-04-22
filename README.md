@@ -66,3 +66,4 @@ start = "src.quart_example:run"
 By running `poetry run start` you are running the script called `start`
 
 This project deploys via GH Actions
+Uses https://github.com/appleboy/ssh-action for SSH connection into AWS
