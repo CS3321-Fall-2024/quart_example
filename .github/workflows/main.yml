@@ -81,7 +81,7 @@ jobs:
           key: ${{ secrets.SSH_AWS_PEM }}
           script: |
             echo "Running Container"
-            docker rm -f quart_example || true
-            docker pull ryandavis7/quart_example:latest
-            docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
-            docker ps
+            sudo docker rm -f quart_example || true
+            sudo docker pull ryandavis7/quart_example:latest
+            sudo docker run -d --name quart_example -p 80:80 ryandavis7/quart_example:latest
+            sudo docker ps
