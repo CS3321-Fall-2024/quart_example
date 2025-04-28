@@ -26,6 +26,38 @@ jobs:
       - name: Push Docker image to registry
         run: |
           docker push ryandavis7/quart_example:latest
+
+
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: '3.x'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 - -- version=1.8.2
+          
+      - name: Configure Poetry
+        run: |
+          echo "SHOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      - name: Install pytest
+        run: |
+          poetry add pytest -- group=dev
+
+      - name: Run pytest
+        run: |
+          pytest
+      
+        
   
   deploy:
     needs: build
